@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://silverbeats.github.io/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2020-09-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://silverbeats.github.io/note/index.html</loc>
+    
+    <lastmod>2020-09-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://silverbeats.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-09-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://silverbeats.github.io/about/index.html</loc>
+    
+    <lastmod>2020-09-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://silverbeats.github.io/tags/index.html</loc>
+    
+    <lastmod>2020-09-13</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>http://silverbeats.github.io/</loc>
+    <lastmod>2020-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>http://silverbeats.github.io/tags/hexo/</loc>
+    <lastmod>2020-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://silverbeats.github.io/tags/git/</loc>
+    <lastmod>2020-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://silverbeats.github.io/tags/github/</loc>
+    <lastmod>2020-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://silverbeats.github.io/tags/nodejs/</loc>
+    <lastmod>2020-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>http://silverbeats.github.io/categories/hexo/</loc>
+    <lastmod>2020-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>
