@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>LearnFoever</title>
+  <title>LearnForever</title>
   <icon>https://www.gravatar.com/avatar/92d41ced912974c19d6701831ab0718c</icon>
   
   <link href="http://silverbeats.github.io/atom.xml" rel="self"/>

@@ -39,7 +39,7 @@
 
   <url>
     <loc>http://silverbeats.github.io/</loc>
-    <lastmod>2020-09-13</lastmod>
+    <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -47,28 +47,28 @@
   
   <url>
     <loc>http://silverbeats.github.io/tags/hexo/</loc>
-    <lastmod>2020-09-13</lastmod>
+    <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://silverbeats.github.io/tags/git/</loc>
-    <lastmod>2020-09-13</lastmod>
+    <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://silverbeats.github.io/tags/github/</loc>
-    <lastmod>2020-09-13</lastmod>
+    <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://silverbeats.github.io/tags/nodejs/</loc>
-    <lastmod>2020-09-13</lastmod>
+    <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -77,7 +77,7 @@
   
   <url>
     <loc>http://silverbeats.github.io/categories/hexo/</loc>
-    <lastmod>2020-09-13</lastmod>
+    <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
