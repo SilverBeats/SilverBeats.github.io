@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://silverbeats.github.io/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</loc>
+    <loc>www.silverbeats.cn/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2020-09-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>www.silverbeats.cn/note/index.html</loc>
     
     <lastmod>2020-09-13</lastmod>
     
   </url>
   
   <url>
-    <loc>http://silverbeats.github.io/note/index.html</loc>
+    <loc>www.silverbeats.cn/categories/index.html</loc>
     
     <lastmod>2020-09-13</lastmod>
     
   </url>
   
   <url>
-    <loc>http://silverbeats.github.io/categories/index.html</loc>
+    <loc>www.silverbeats.cn/about/index.html</loc>
     
     <lastmod>2020-09-13</lastmod>
     
   </url>
   
   <url>
-    <loc>http://silverbeats.github.io/about/index.html</loc>
-    
-    <lastmod>2020-09-13</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://silverbeats.github.io/tags/index.html</loc>
+    <loc>www.silverbeats.cn/tags/index.html</loc>
     
     <lastmod>2020-09-13</lastmod>
     
@@ -38,7 +38,7 @@
   
 
   <url>
-    <loc>http://silverbeats.github.io/</loc>
+    <loc>www.silverbeats.cn</loc>
     <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -46,28 +46,28 @@
 
   
   <url>
-    <loc>http://silverbeats.github.io/tags/hexo/</loc>
+    <loc>www.silverbeats.cn/tags/hexo/</loc>
     <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://silverbeats.github.io/tags/git/</loc>
+    <loc>www.silverbeats.cn/tags/git/</loc>
     <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://silverbeats.github.io/tags/github/</loc>
+    <loc>www.silverbeats.cn/tags/github/</loc>
     <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://silverbeats.github.io/tags/nodejs/</loc>
+    <loc>www.silverbeats.cn/tags/nodejs/</loc>
     <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -76,7 +76,7 @@
 
   
   <url>
-    <loc>http://silverbeats.github.io/categories/hexo/</loc>
+    <loc>www.silverbeats.cn/categories/hexo/</loc>
     <lastmod>2020-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
