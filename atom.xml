@@ -3,11 +3,11 @@
   <title>LearnForever</title>
   <icon>https://www.gravatar.com/avatar/92d41ced912974c19d6701831ab0718c</icon>
   
-  <link href="www.silverbeats.cn/atom.xml" rel="self"/>
+  <link href="blog.silverbeats.cn/atom.xml" rel="self"/>
   
-  <link href="www.silverbeats.cn/"/>
+  <link href="blog.silverbeats.cn/"/>
   <updated>2020-09-15T01:28:59.342Z</updated>
-  <id>www.silverbeats.cn/</id>
+  <id>blog.silverbeats.cn/</id>
   
   <author>
     <name>silverbeats</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>hexo之yelee主题配置</title>
-    <link href="www.silverbeats.cn/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
-    <id>www.silverbeats.cn/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</id>
+    <link href="blog.silverbeats.cn/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
+    <id>blog.silverbeats.cn/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</id>
     <published>2020-09-13T11:53:59.000Z</published>
     <updated>2020-09-15T01:28:59.342Z</updated>
     
@@ -30,16 +30,16 @@
     
     
     
-    <category term="hexo" scheme="www.silverbeats.cn/categories/hexo/"/>
+    <category term="hexo" scheme="blog.silverbeats.cn/categories/hexo/"/>
     
     
-    <category term="hexo" scheme="www.silverbeats.cn/tags/hexo/"/>
+    <category term="hexo" scheme="blog.silverbeats.cn/tags/hexo/"/>
     
-    <category term="git" scheme="www.silverbeats.cn/tags/git/"/>
+    <category term="git" scheme="blog.silverbeats.cn/tags/git/"/>
     
-    <category term="github" scheme="www.silverbeats.cn/tags/github/"/>
+    <category term="github" scheme="blog.silverbeats.cn/tags/github/"/>
     
-    <category term="nodejs" scheme="www.silverbeats.cn/tags/nodejs/"/>
+    <category term="nodejs" scheme="blog.silverbeats.cn/tags/nodejs/"/>
     
   </entry>
   
