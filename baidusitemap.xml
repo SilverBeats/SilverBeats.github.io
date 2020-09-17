@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>blog.silverbeats.cn/%E6%8E%92%E5%BA%8F/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-09-17</lastmod>
   </url>
   <url>
     <loc>blog.silverbeats.cn/hexo%E4%B9%8Byelee%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2020-09-16</lastmod>
+    <lastmod>2020-09-17</lastmod>
+  </url>
+  <url>
+    <loc>blog.silverbeats.cn/hexo%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2020-09-17</lastmod>
   </url>
 </urlset> 
