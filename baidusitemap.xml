@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>blog.silverbeats.cn/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/</loc>
+    <lastmod>2020-09-19</lastmod>
+  </url>
+  <url>
     <loc>blog.silverbeats.cn/%E6%8E%92%E5%BA%8F/</loc>
     <lastmod>2020-09-18</lastmod>
   </url>
