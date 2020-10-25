@@ -1,0 +1,560 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.1.1"><link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico"><link rel="mask-icon" href="/images/favicon.ico" color="#222"><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css"><script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script><script id="hexo-configurations">var NexT=window.NexT||{},CONFIG={hostname:"blog.silverbeats.cn",root:"/",scheme:"Gemini",version:"7.8.0",exturl:!1,sidebar:{position:"left",display:"post",padding:18,offset:12,onmobile:!1},copycode:{enable:!0,show_result:!0,style:"flat"},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},bookmark:{enable:!0,color:"#222",save:"auto"},fancybox:!0,mediumzoom:!0,lazyload:!0,pangu:!1,comments:{style:"tabs",active:null,storage:!0,lazyload:!1,nav:null},algolia:{hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},localsearch:{enable:!0,trigger:"auto",top_n_per_article:1,unescape:!1,preload:!1},motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},path:"search.xml"}</script><meta name="description" content="数据结构,图"><meta property="og:type" content="article"><meta property="og:title" content="图"><meta property="og:url" content="blog.silverbeats.cn/%E5%9B%BE/index.html"><meta property="og:site_name" content="LearnForever"><meta property="og:description" content="数据结构,图"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/图.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E8%BF%9E%E9%80%9A%E5%AD%90%E5%9B%BE.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E6%9E%81%E5%A4%A7%E8%BF%9E%E9%80%9A%E5%AD%90%E5%9B%BE.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-有向图.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-无向图.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-网.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-矩阵乘积.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-矩阵乘积2.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表法-结点结构.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表法-有向图.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表法-无向图.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表VS邻接矩阵.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接多重表.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接多重表-步骤.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/十字链表数据结构.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/十字链表.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/广度优先生成树.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/prim01.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/prim02.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/prim03.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/Kruskal.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/Kruskal01.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal02.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal03.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal04.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal05.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal06.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/迪杰斯特拉算法.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/迪杰斯特拉算法-通过path数组找到路径.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/弗洛伊德算法思想.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/弗洛伊德01.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/弗洛伊德02.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B703.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B704.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B705.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/AOE.png"><meta property="og:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/关键路径.png"><meta property="article:published_time" content="2020-10-25T12:49:47.000Z"><meta property="article:modified_time" content="2020-10-25T13:38:56.056Z"><meta property="article:author" content="silverbeats"><meta property="article:tag" content="数据结构"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://resource.silverbeats.cn/static/images/算法/数据结构/图/图.png"><link rel="canonical" href="blog.silverbeats.cn/%E5%9B%BE/"><script id="page-configurations">CONFIG.page={sidebar:"",isHome:!1,isPost:!0,lang:"zh-CN"}</script><title>图 | LearnForever</title><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-header,.use-motion .comments,.use-motion .menu-item,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript><link rel="alternate" href="/atom.xml" title="LearnForever" type="application/atom+xml"></head><body itemscope itemtype="http://schema.org/WebPage"><div class="container use-motion"><div class="headband"></div><header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-container"><div class="site-nav-toggle"><div class="toggle" aria-label="切换导航栏"><span class="toggle-line toggle-line-first"></span> <span class="toggle-line toggle-line-middle"></span> <span class="toggle-line toggle-line-last"></span></div></div><div class="site-meta"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span><h1 class="site-title">LearnForever</h1><span class="logo-line-after"><i></i></span></a></div><div class="site-nav-right"><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class="site-nav"><ul id="menu" class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-search"><a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索</a></li></ul></nav><div class="search-pop-overlay"><div class="popup search-popup"><div class="search-header"><span class="search-icon"><i class="fa fa-search"></i></span><div class="search-input-container"><input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input"></div><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span></div><div id="search-result"><div id="no-result"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div></div></div></div></div></header><div class="reading-progress-bar"></div><a role="button" class="book-mark-link book-mark-link-fixed"></a> <a href="https://github.com/SilverBeats" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><main class="main"><div class="main-inner"><div class="content-wrap"><div class="content post posts-expand"><article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="blog.silverbeats.cn/%E5%9B%BE/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="/images/avatar.jpg"><meta itemprop="name" content="silverbeats"><meta itemprop="description" content="坚持学习每一天"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="LearnForever"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">图</h1><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-calendar"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建时间：2020-10-25 20:49:47 / 修改时间：21:38:56" itemprop="dateCreated datePublished" datetime="2020-10-25T20:49:47+08:00">2020-10-25</time> </span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="far fa-folder"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a> </span>， <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a> </span></span><span id="/%E5%9B%BE/" class="post-meta-item leancloud_visitors" data-flag-title="图" title="阅读次数"><span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">阅读次数：</span> <span class="leancloud-visitors-count"></span></span><br><span class="post-meta-item" title="本文字数"><span class="post-meta-item-icon"><i class="far fa-file-word"></i> </span><span class="post-meta-item-text">本文字数：</span> <span>18k</span> </span><span class="post-meta-item" title="阅读时长"><span class="post-meta-item-icon"><i class="far fa-clock"></i> </span><span class="post-meta-item-text">阅读时长 &asymp;</span> <span>16 分钟</span></span><div class="post-description">数据结构,图</div></div></header><div class="post-body" itemprop="articleBody"><h1 id="1-逻辑结构"><a class="markdownIt-Anchor" href="#1-逻辑结构"></a> 1 逻辑结构</h1><h2 id="11-图的定义"><a class="markdownIt-Anchor" href="#11-图的定义"></a> 1.1 图的定义</h2><p>图G由顶点集V和边集E组成，记为G=（V，E），其中V(G)表示图G中顶点的<mark>有限非空集</mark>，E(G)表示图G中顶点之间的关系（边）集合。|V|表示图G中顶点的个数，也称图G的阶；|E|表示图G中边的条数</p><img alt="图" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/图.png"><h2 id="12-相关概念"><a class="markdownIt-Anchor" href="#12-相关概念"></a> 1.2 相关概念</h2><table><thead><tr><th>术语</th><th>说明</th></tr></thead><tbody><tr><td>无向图&amp;有向图</td><td>图的边是否有方向。无向图的边没有方向，用括号表示如：(v,w)<br>有向图的边区分起始点和终止点，有向图的边又称弧，用尖括号表示，如&lt;v,w&gt;</td></tr><tr><td>简单图</td><td>无重复边，不存在结点到自身的边</td></tr><tr><td>多重图</td><td>非简单图</td></tr><tr><td>无向完全图</td><td>任意两个顶点之间都存在边。n个顶点有n(n-1)/2条边</td></tr><tr><td>有向完全图</td><td>任意两个顶点之间都存在方向相反的弧，n个顶点有n(n-1)条弧</td></tr><tr><td>子图</td><td>设有两个图G=（V，E），G<sup>’’</sup>=（V<sup>’’</sup>，E<sup>’’</sup>），若V<sup>’'</sup>是V的子集，E<sup>’'</sup>是E的子集，则成G<sup>’'</sup>是G的子图</td></tr><tr><td>连通</td><td>针对无向图。若从顶点v到顶点w有路径存在，称v和w是连通的</td></tr><tr><td>连通图</td><td>任意两个结点之间都是连通的。n个顶点的连通图最少有n-1条边。</td></tr><tr><td>强连通</td><td>针对有向图。顶点v到w，以及顶点w到v都有路径，则称v与w强连通。</td></tr><tr><td>强连通图</td><td>任意两个结点之间都是强连通的。n个顶点的强连通图最少有n条边</td></tr><tr><td>连通分量&amp;&amp;强连通分量</td><td>极大（强）连通子图。对于G的一个（强）连通子图G<sup>’</sup>，如果不存在G的另一个（强）连通子图G<sup>’‘</sup>，使得G<sup>’</sup>⊂G<sup>’’</sup>，则称G<sup>’</sup>为G的（强）连通分量。<br><mark>（强）连通图，（强）连通分量与原图一致，非（强）连通图，则有多个（强）连通分量</mark></td></tr><tr><td>极小连通子图</td><td>满足连通图的情况下，且包含的边最少的子图</td></tr><tr><td>生成树</td><td>连通图，且包含全部顶点的一个极小连通子图。<mark>不唯一，n个顶点图的生成树有n-1条边</mark></td></tr><tr><td>生成森林</td><td>非连通图所有连通分量的生成树组成生成森林</td></tr><tr><td>顶底的度</td><td>①无向图中，某顶点的度即为和此顶点相连边的数目。<mark>n个顶点，e条边的无向图中的度总数为2e</mark><br>②有向图中，顶点的度 = 入度 + 出度，<mark>n个顶点，e条边的有向图中出度 = 入度 = e</mark></td></tr><tr><td>网</td><td>给图中的每条边增加一个权重</td></tr><tr><td>稠密图&amp;&amp;稀疏图</td><td>稠不稠密，看边多不多。|E| &lt; |V|log|V|</td></tr><tr><td>有向树</td><td>一个顶点的入度为0，其余顶点的入度为1的有向图</td></tr><tr><td>路径</td><td>图中顶点v到w的顶点序列，序列中顶点不重复的路径称为简单路径</td></tr><tr><td>路径长度</td><td>路径上边的 数目，若该路径最短则称距离</td></tr><tr><td>回路</td><td>第一个顶点和最后一个顶点相同的路径</td></tr><tr><td></td><td>倘若回路中除起点终点之外的所有点不重复，则称简单回路</td></tr></tbody></table><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E8%BF%9E%E9%80%9A%E5%AD%90%E5%9B%BE.png" alt="连通子图"></p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E6%9E%81%E5%A4%A7%E8%BF%9E%E9%80%9A%E5%AD%90%E5%9B%BE.png" alt="极大连通子图"></p><h1 id="2-存储结构及操作"><a class="markdownIt-Anchor" href="#2-存储结构及操作"></a> 2 存储结构及操作</h1><h2 id="21-邻接矩阵"><a class="markdownIt-Anchor" href="#21-邻接矩阵"></a> 2.1 邻接矩阵</h2><p>存储图，无非是存储点集（一位数组存储）和边集（二维数组存储）。</p><img alt="邻接矩阵-有向图" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-有向图.png"> <img alt="邻接矩阵-无向图" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-无向图.png"> <img alt="邻接矩阵-网" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-网.png"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define MaxVertexNum 100
+typedef char VertexType;
+typedef in EdgeType;
+typedef struct &#123;
+  VertexType Vex[MaxVertexNum];
+  EdgeType Edge[MaxVertexNum][MaxVertexNum];
+  int vexnum,arcnum;
+&#125;MGraph;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>【性质】</strong></p><ul><li><p>邻接矩阵的空间复杂度O(n<sup>2</sup>)</p></li><li><p>无向图的邻接矩阵为对称矩阵</p></li><li><p>无向图中第i行（或第j列）非0元素（非正无穷）的个数为第i个顶点的度</p></li><li><p>有向图中第i行（或第j列）非0元素（非正无穷）的个数为第i个顶点的出度（入度）</p></li><li><p>设图G的邻接矩阵为A，矩阵A<sup>n</sup>的含义</p><img alt="邻接矩阵-矩阵乘积" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-矩阵乘积.png"> <img alt="邻接矩阵-矩阵乘积2" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接矩阵-矩阵乘积2.png"></li></ul><h2 id="22-邻接表法"><a class="markdownIt-Anchor" href="#22-邻接表法"></a> 2.2 邻接表法</h2><p>为每个顶点建立一个单链表存放与它相邻的边。</p><p><strong>顶点表</strong></p><p>采用<mark>顺序存储</mark>，每个数组元素存放顶点的数据和边表的头指针</p><p><strong>边表</strong></p><p>采用<mark>链式存储</mark>，单链表中存放与一个顶点相邻的所有边，一个链表结点表示一条从该顶点到链表结点顶点的边</p><img alt="邻接表法-结点结构" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表法-结点结构.png"> <img alt="邻接表法-有向图" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表法-有向图.png"> <img alt="邻接表法-无向图" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表法-无向图.png"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define MaxVertexNum 100
+&#x2F;&#x2F; 边表结点
+typedef struct ArcNode&#123;
+  int adjvex;
+  struct ArcNode *next;
+  &#x2F;&#x2F; InfoType info; 边的权重
+&#125;ArcNode;
+
+&#x2F;&#x2F; 顶点表
+typedef struct VNode
+&#123;
+  VertexType data;
+  ArcNode *first;
+&#125;VNode,AdjList[MaxVertexNum];
+
+&#x2F;&#x2F; 邻接表
+typedef struct &#123;
+  AdjList vetices;
+  int vexnum,arcnum;
+&#125;ALGraph;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>【性质】</strong></p><ul><li><p>若G为无向图，存储空间为O（|V| + 2|E|）</p><p>若G为有向图，存储空间为O（|V| + |E|）</p></li><li><p>邻接表适合存储稀疏图</p></li><li><p>若G为无向图，则结点的度为该结点边表的长度</p><p>若G为有向图，则结点的出度为该结点边表的长度，计算入度则要遍历整个邻接表</p></li><li><p>邻接表不唯一，边表结点的顺序根据算法和输入的不同可能会不同</p></li><li><p><mark>邻接矩阵和邻接表比较</mark></p><img alt="邻接表VS邻接矩阵" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接表VS邻接矩阵.png"></li></ul><h2 id="23-邻接多重表"><a class="markdownIt-Anchor" href="#23-邻接多重表"></a> 2.3 邻接多重表</h2><p><mark>无向图</mark>的一种链式存储</p><img alt="邻接多重表" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接多重表.png"><table><thead><tr><th>字段</th><th>说明</th></tr></thead><tbody><tr><td>data</td><td>存放数据</td></tr><tr><td>firstedge</td><td>边表单链表头指针</td></tr><tr><td>ivex</td><td>该边的第一个端点</td></tr><tr><td>ilink</td><td>与第一个端点相邻的下一个边表结点指针</td></tr><tr><td>jvex</td><td>第二点端点</td></tr><tr><td>jlink</td><td>与第二个端点相邻的下一个边表结点指针</td></tr><tr><td>info</td><td>非必须</td></tr><tr><td>mark</td><td>非必须</td></tr></tbody></table><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/邻接多重表-步骤.png" alt="邻接多重表-步骤"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define MaxVertexNum 100
+&#x2F;&#x2F; 边表
+typedef struct ArcNode&#123;
+  int ivex,jvex;
+  struct ArcNode *ilink,*jlink;
+  &#x2F;&#x2F; infoType info;
+  &#x2F;&#x2F; bool mark;
+&#125;ArchNode;
+&#x2F;&#x2F; 顶点表
+typedef struct VNode &#123;
+  VertexType data;
+  ArcNode *firstedge;
+&#125;VNode;
+&#x2F;&#x2F; 邻接多重表
+typedef struct &#123;
+  VNode adjmulist[MaxVertexNum];
+  int vexnum, arcnum;
+&#125;AMLGraph;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="24-十字链表"><a class="markdownIt-Anchor" href="#24-十字链表"></a> 2.4 十字链表</h2><p><mark>有向图</mark>的一种<mark>链式存储</mark>结构，邻接表容易找到顶点的出度，但是不容易找该顶点的入度，因此有十字链表来解决这个问题。</p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/十字链表数据结构.png" alt="十字链表数据结构"><table><thead><tr><th></th><th>说明</th></tr></thead><tbody><tr><td>data</td><td>数据域。存放数据。</td></tr><tr><td>firstin</td><td>入边单链表第一个结点的头指针</td></tr><tr><td>firstout</td><td>出边单链表第一个结点的头指针</td></tr><tr><td>tailvex</td><td>尾域。存放该弧，弧尾的结点指针</td></tr><tr><td>headvex</td><td>头域。存放该弧，弧头的结点指针</td></tr><tr><td>hlink</td><td>指针域。下一个弧头相同的结点指针</td></tr><tr><td>tlink</td><td>指针域。下一个弧尾相同的结点指针</td></tr><tr><td>info</td><td>存放该边数据，比如权重。</td></tr></tbody></table><img alt="十字链表流程" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/十字链表.png"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define MaxVertexNum 100
+&#x2F;&#x2F; 边表结点
+typedef struct ArcNode&#123;
+  int tailvex,headvex;
+  struct ArcNode *hlink, *tlink;
+  &#x2F;&#x2F; InfoType info; 边的权重
+&#125;ArcNode;
+
+&#x2F;&#x2F; 顶点表
+typedef struct VNode&#123;
+  VertexType data;
+  ArcNode *firstin, *firstout;
+&#125;VNode,AdjList[MaxVertexNum];
+
+&#x2F;&#x2F; 十字接表
+typedef struct &#123;
+  VNode xlist[MaxVertexNum];
+  int vexnum,arcnum;
+&#125;GLGraph;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="25-十字链表vs邻接多重表"><a class="markdownIt-Anchor" href="#25-十字链表vs邻接多重表"></a> 2.5 十字链表VS邻接多重表</h2><p>十字链表：解决邻接表存储有向图时，得入度难的问题</p><p>邻接多重表：解决邻接表存无向图时，重复存储边的问题</p><h1 id="3-图的遍历"><a class="markdownIt-Anchor" href="#3-图的遍历"></a> 3 图的遍历</h1><p>从图中某一顶点出发，按照某种搜索方法沿着图中的边对图中的所有顶点访问一次且仅访问一次</p><h2 id="31-广度优先遍历"><a class="markdownIt-Anchor" href="#31-广度优先遍历"></a> 3.1 广度优先遍历</h2><p>空间复杂度：O(|V|)</p><p>时间复杂度：</p><pre><code>- 邻接矩阵：O(|V|^2^)
+- 邻接表法：O(|V| + |E|)
+</code></pre><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">bool visited[MAX_TREE_SIZE];
+void BFSTraverse(Graph G) &#123;
+  for(int i &#x3D; 0; i &lt; G.vexnum; i++) &#123;
+    visited[i] &#x3D; false;
+  &#125;
+  InitQueue(Q);
+  for(int i; i &lt; G.vexnum; i++) &#123;
+  	if(!visited[i]) BFS(G,i);
+  &#125;
+&#125;
+
+void BFS(Graph G, int v) &#123;
+  visit(v);
+  visited[v] &#x3D; true;
+  EnQueue(Q,v);
+  while(!isEmpty(Q)) &#123;
+    DeQueue(Q,v);
+    for(w &#x3D; FirstNeighbor(G,v);w&gt;&#x3D;0;w &#x3D; NextNeighbor(G,v,w)) &#123;
+      if(!visited[w])&#123;
+        visit[w];
+        visited[w] &#x3D; true;
+        EnQueue(Q,w);
+      &#125;
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>【<mark>无权图</mark>单源最短路径问题】</strong></p><p>定义从顶点u到顶点v经过边数最少的路径称为最短路径d(u,v)。如若u到v没有路径，则d(u,v) = ∞</p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void BFS_MIN_Distance(Graph G, int u) &#123;
+  &#x2F;&#x2F; d为距离数组，数组长度为顶点的数量，每个位置初始化置为最大值
+  for(int i &#x3D; 0; i &lt; G.vexnum; i++)
+    d[i] &#x3D; MAX;
+  &#x2F;&#x2F; u结点访问标识位置为true
+  visited[u] &#x3D; true;
+  d[u] &#x3D; 0;
+  &#x2F;&#x2F; u结点入队列
+  EnQueue(Q,u);
+  &#x2F;&#x2F; 队列不为空，至少有u结点
+  while(!isEmpty(Q)) &#123;
+    &#x2F;&#x2F; 将结点u出队列，另u为该结点的数组下标，哪个结点出队列，u就为出队列的结点所在数组下标
+    DeQueue(Q,u);
+    &#x2F;&#x2F; w为与u结点第一个邻接点
+    for(w &#x3D; FirstNeighbor(G,u); w &gt;&#x3D; 0; w &#x3D; NextNeighbor(G,u,w)) &#123;
+      if(!visit[w]) &#123;
+        visited[w] &#x3D; true;
+        d[w] &#x3D; d[u] + 1;
+        EnQuene(Q,w);
+      &#125;
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><strong>【广度优先生成树】</strong></p><p>在广度遍历过程中，可以得到一颗遍历树，称为广度优先生成树（生成森林）</p><ul><li>结点1入队列，队列Q={1}</li><li>结点1出队列，结点2,3入队列，队列Q={2,3}</li><li>结点2出队列，结点4,5入队列，队列Q={3,4,5}</li><li>结点3出队列，结点6入队列，队列Q={4,5,6}</li><li>结点4入队列，结点7入队列，队列Q={5,6,7}</li><li>结点5出队列</li><li>结点6出队列</li><li>结点7出队列</li></ul><p>在广度优先遍历的过程中存在一个数组，用以标识每个结点是否被访问，放置重复遍历（比如结点4出队列后，结点5和7是要入队列的，此时就不满足每个结点只遍历一次这个要求，所以每个结点需要一个标识位用以判断是否被访问，判断在入队列前）</p><img alt="广度优先生成树" data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/广度优先生成树.png"><h2 id="32-深度优先遍历"><a class="markdownIt-Anchor" href="#32-深度优先遍历"></a> 3.2 深度优先遍历</h2><p>空间复杂度：O(|V|)</p><p>时间复杂度：</p><ul><li>邻接矩阵法：O(|V|<sup>2</sup>)</li><li>邻接表法：O(|V| + |E|)</li></ul><p><strong>【搜索过程】</strong></p><ul><li>首先访问起始顶点v</li><li>接着由v出发访问v的任意一个邻接但未被访问的邻接顶点w<sub>i</sub></li><li>然后再访问与w<sub>i</sub>邻接且未被访问的任意顶点y<sub>i</sub></li><li>若w<sub>i</sub>没有邻接且未被访问的顶点时，退回到它的上一层顶点v</li><li>重复</li></ul><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">bool visited[MAX_TREE_SIZE];
+void DFSTraverse(Graph G) &#123;
+  for(int i &#x3D; 0; i &lt; G.vexnuml i++)
+    visited[i] &#x3D; false;
+  for(int i &#x3D;0; i &lt; G.vexnum; i++)
+    if(!visited[i])DFS(G,i);
+&#125;
+
+void DFS(Graph G, int v) &#123;
+  visit(v);
+  visited[v] &#x3D; true;
+  for(w &#x3D; FirstNeighbor(G,v); w &gt;&#x3D; 0; w &#x3D; NextNeighbor(G,v,w)) &#123;
+    if(!visited[w]) DFS(G,w);
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><mark>邻接矩阵法的DFS(BFS)序列是唯一的，邻接表法的不唯一</mark></p><h2 id="33-遍历与连通性"><a class="markdownIt-Anchor" href="#33-遍历与连通性"></a> 3.3 遍历与连通性</h2><ul><li>无向图<ul><li>在任意结点调用BFS或者DFS，倘若能访问所有的结点，说明是连通的</li><li>调用遍历函数（BFS或者DFS）次数为连通分量的个数。（这里的次数是指主函数中使用BFS或者DFS次数，BFS或DFS内部递归调用不算）</li></ul></li></ul><h1 id="4-应用"><a class="markdownIt-Anchor" href="#4-应用"></a> 4 应用</h1><h2 id="41-最小生成树"><a class="markdownIt-Anchor" href="#41-最小生成树"></a> 4.1 最小生成树</h2><p>对于<mark>带权的无向连通图</mark>G，G中所有生成树中边权值之和最小的生成树称为最小生成树(MST)</p><p><strong>【性质】</strong></p><ul><li><p>最小生成树不一定唯一，可以有多个。</p><blockquote><p>满足下列条件，MST唯一</p><ol><li>各边权重不同</li><li>原图本身只有n-1条边，最小生成树是其本身</li></ol></blockquote></li><li><p>最小生成树无论有多少个，它们的权重之和是唯一的</p></li><li><p>最小生成树的边数 = n- 1</p></li></ul><h3 id="411-prim算法"><a class="markdownIt-Anchor" href="#411-prim算法"></a> 4.1.1 Prim算法</h3><p>普里姆算法在找最小生成树时，将顶点分为两类，一类是在查找的过程中已经包含在树中的（假设为 A 类），剩下的是另一类（假设为 B 类）。</p><p>对于给定的连通网，起始状态全部顶点都归为 B 类。在找最小生成树时，选定任意一个顶点作为起始点，并将之从 B 类移至 A 类；然后找出 B 类中到 A 类中的顶点之间权值最小的顶点，将之从 B 类移至 A 类，如此重复，直到 B 类中没有顶点为止。所走过的顶点和边就是该连通图的最小生成树。</p><p>举例步骤如下：</p><p>假如从顶点A出发，顶点 B、C、D 到顶点 A 的权值分别为 2、4、2，所以，对于顶点 A 来说，顶点 B 和顶点 D 到 A 的权值最小，假设先找到的顶点 B：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/prim01.png" alt></p><p>继续分析顶点 C 和 D，顶点 C 到 B 的权值为 3，到 A 的权值为 4；顶点 D 到 A 的权值为 2，到 B 的权值为无穷大（如果之间没有直接通路，设定权值为无穷大）。所以顶点 D 到 A 的权值最小：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/prim02.png" alt></p><p>最后，只剩下顶点 C，到 A 的权值为 4，到 B 的权值和到 D 的权值一样大，为 3。所以该连通图有两个最小生成树：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/prim03.png" alt></p><p>普里姆算法的运行效率只与连通网中包含的<mark>顶点数相关</mark>，而和网所含的边数无关。所以普里姆算法适合于解决<mark>边稠密的网</mark>，该算法运行的</p><p>时间复杂度：O(n<sup>2</sup>)。</p><blockquote><p>如果连通网中所含边的绸密度不高，则建议使用克鲁斯卡尔算法求最小生成树</p></blockquote><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#define VertexType int
+#define VRType int
+#define MAX_VERtEX_NUM 20
+#define InfoType char   
+#define INFINITY 65535
+typedef struct &#123;
+    VRType adj;                             &#x2F;&#x2F;对于无权图，用 1 或 0 表示是否相邻；对于带权图，直接为权值。
+    InfoType * info;                        &#x2F;&#x2F;弧额外含有的信息指针
+&#125;ArcCell,AdjMatrix[MAX_VERtEX_NUM][MAX_VERtEX_NUM];
+
+typedef struct &#123;
+    VertexType vexs[MAX_VERtEX_NUM];        &#x2F;&#x2F;存储图中顶点数据
+    AdjMatrix arcs;                         &#x2F;&#x2F;二维数组，记录顶点之间的关系
+    int vexnum,arcnum;                      &#x2F;&#x2F;记录图的顶点数和弧（边）数
+&#125;MGraph;
+
+&#x2F;&#x2F;根据顶点本身数据，判断出顶点在二维数组中的位置
+int LocateVex(MGraph G,VertexType v)&#123;
+    int i&#x3D;0;
+    &#x2F;&#x2F;遍历一维数组，找到变量v
+    for (; i&lt;G.vexnum; i++) &#123;
+        if (G.vexs[i]&#x3D;&#x3D;v) &#123;
+            return i;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+&#x2F;&#x2F;构造无向网
+void CreateUDN(MGraph* G)&#123;
+    scanf(&quot;%d,%d&quot;,&amp;(G-&gt;vexnum),&amp;(G-&gt;arcnum));
+    for (int i&#x3D;0; i&lt;G-&gt;vexnum; i++) &#123;
+        scanf(&quot;%d&quot;,&amp;(G-&gt;vexs[i]));
+    &#125;
+    for (int i&#x3D;0; i&lt;G-&gt;vexnum; i++) &#123;
+        for (int j&#x3D;0; j&lt;G-&gt;vexnum; j++) &#123;
+            G-&gt;arcs[i][j].adj&#x3D;INFINITY;
+            G-&gt;arcs[i][j].info&#x3D;NULL;
+        &#125;
+    &#125;
+    for (int i&#x3D;0; i&lt;G-&gt;arcnum; i++) &#123;
+        int v1,v2,w;
+        scanf(&quot;%d,%d,%d&quot;,&amp;v1,&amp;v2,&amp;w);
+        int m&#x3D;LocateVex(*G, v1);
+        int n&#x3D;LocateVex(*G, v2);
+        if (m&#x3D;&#x3D;-1 ||n&#x3D;&#x3D;-1) &#123;
+            printf(&quot;no this vertex\n&quot;);
+            return;
+        &#125;
+        G-&gt;arcs[n][m].adj&#x3D;w;
+        G-&gt;arcs[m][n].adj&#x3D;w;
+    &#125;
+&#125;
+
+&#x2F;&#x2F;辅助数组，用于每次筛选出权值最小的边的邻接点
+typedef struct &#123;
+    VertexType adjvex;&#x2F;&#x2F;记录权值最小的边的起始点
+    VRType lowcost;&#x2F;&#x2F;记录该边的权值
+&#125;closedge[MAX_VERtEX_NUM];
+closedge theclose;&#x2F;&#x2F;创建一个全局数组，因为每个函数中都会使用到
+&#x2F;&#x2F;在辅助数组中找出权值最小的边的数组下标，就可以间接找到此边的终点顶点。
+int minimun(MGraph G,closedge close)&#123;
+    int min&#x3D;INFINITY;
+    int min_i&#x3D;-1;
+    for (int i&#x3D;0; i&lt;G.vexnum; i++) &#123;
+        &#x2F;&#x2F;权值为0，说明顶点已经归入最小生成树中；然后每次和min变量进行比较，最后找出最小的。
+        if (close[i].lowcost&gt;0 &amp;&amp; close[i].lowcost &lt; min) &#123;
+            min&#x3D;close[i].lowcost;
+            min_i&#x3D;i;
+        &#125;
+    &#125;
+    &#x2F;&#x2F;返回最小权值所在的数组下标
+    return min_i;
+&#125;
+&#x2F;&#x2F;普里姆算法函数，G为无向网，u为在网中选择的任意顶点作为起始点
+void miniSpanTreePrim(MGraph G,VertexType u)&#123;
+    &#x2F;&#x2F;找到该起始点在顶点数组中的位置下标
+    int k&#x3D;LocateVex(G, u);
+    &#x2F;&#x2F;首先将与该起始点相关的所有边的信息：边的起始点和权值，存入辅助数组中相应的位置，例如（1，2）边，adjvex为0，lowcost为6，存入theclose[1]中，辅助数组的下标表示该边的顶点2
+    for (int i&#x3D;0; i&lt;G.vexnum; i++) &#123;
+        if (i !&#x3D;k) &#123;
+            theclose[i].adjvex&#x3D;k;
+            theclose[i].lowcost&#x3D;G.arcs[k][i].adj;
+        &#125;
+    &#125;
+    &#x2F;&#x2F;由于起始点已经归为最小生成树，所以辅助数组对应位置的权值为0，这样，遍历时就不会被选中
+    theclose[k].lowcost&#x3D;0;
+    &#x2F;&#x2F;选择下一个点，并更新辅助数组中的信息
+    for (int i&#x3D;1; i&lt;G.vexnum; i++) &#123;
+        &#x2F;&#x2F;找出权值最小的边所在数组下标
+        k&#x3D;minimun(G, theclose);
+        &#x2F;&#x2F;输出选择的路径
+        printf(&quot;v%d v%d\n&quot;,G.vexs[theclose[k].adjvex],G.vexs[k]);
+        &#x2F;&#x2F;归入最小生成树的顶点的辅助数组中的权值设为0
+        theclose[k].lowcost&#x3D;0;
+        &#x2F;&#x2F;信息辅助数组中存储的信息，由于此时树中新加入了一个顶点，需要判断，由此顶点出发，到达其它各顶点的权值是否比之前记录的权值还要小，如果还小，则更新
+        for (int j&#x3D;0; j&lt;G.vexnum; j++) &#123;
+            if (G.arcs[k][j].adj&lt;theclose[j].lowcost) &#123;
+                theclose[j].adjvex&#x3D;k;
+                theclose[j].lowcost&#x3D;G.arcs[k][j].adj;
+            &#125;
+        &#125;
+    &#125;
+    printf(&quot;\n&quot;);
+&#125;
+
+int main()&#123;
+    MGraph G;
+    CreateUDN(&amp;G);
+    miniSpanTreePrim(G, 1);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="412-kruskal算法"><a class="markdownIt-Anchor" href="#412-kruskal算法"></a> 4.1.2 Kruskal算法</h3><p>克鲁斯卡尔算法：从边的角度出发，时间复杂度为O(|E|log|E|)，时间复杂度只和边有关系，与普利姆算法（从顶点出发）相反，适合于求边稀疏的网的最小生成树</p><p>克鲁斯卡尔算法的具体思路是：将所有边按照权值的大小进行升序排序，然后从小到大一一判断，条件为：如果这个边不会与之前选择的所有边组成回路，就可以作为最小生成树的一部分；反之，舍去。直到具有 n 个顶点的连通网筛选出来 n-1 条边为止。筛选出来的边和所有的顶点构成此连通网的最小生成树。</p><blockquote><p>判断是否会产生回路的方法为：在初始状态下给每个顶点赋予不同的标记，对于遍历过程的每条边，其都有两个顶点，判断这两个顶点的标记是否一致，如果一致，说明它们本身就处在一棵树中，如果继续连接就会产生回路；如果不一致，说明它们之间还没有任何关系，可以连接。</p></blockquote><p>假设遍历到一条由顶点 A 和 B 构成的边，而顶点 A 和顶点 B 标记不同，此时不仅需要将顶点 A 的标记更新为顶点 B 的标记，还需要更改所有和顶点 A 标记相同的顶点的标记，全部改为顶点 B 的标记。</p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/Kruskal.png" alt="图1 连通网"><p>例如，使用克鲁斯卡尔算法找图 1 的最小生成树的过程为：</p><p>首先，在初始状态下，对各顶点赋予不同的标记（用颜色区别），如(1)所示：</p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/Kruskal01.png" alt="(1)" style="zoom:50%"><p>对所有边按照权值的大小进行排序，按照从小到大的顺序进行判断，首先是（1，3），由于顶点 1 和顶点 3 标记不同，所以可以构成生成树的一部分，遍历所有顶点，将与顶点 3 标记相同的全部更改为顶点 1 的标记，如（2）所示：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal02.png" alt="(2)"></p><p>其次是（4，6）边，两顶点标记不同，所以可以构成生成树的一部分，更新所有顶点的标记为：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal03.png" alt="(3)"></p><p>其次是（2，5）边，两顶点标记不同，可以构成生成树的一部分，更新所有顶点的标记为：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal04.png" alt="(4)"></p><p>然后最小的是（3，6）边，两者标记不同，可以连接，遍历所有顶点，将与顶点 6 标记相同的所有顶点的标记更改为顶点 1 的标记：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal05.png" alt="(5)"></p><p>继续选择权值最小的边，此时会发现，权值为 5 的边有 3 个，其中（1，4）和（3，4）各自两顶点的标记一样，如果连接会产生回路，所以舍去，而（2，3）标记不一样，可以选择，将所有与顶点 2 标记相同的顶点的标记全部改为同顶点 3 相同的标记：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/Kruskal06.png" alt="最终结果"><br>当选取的边的数量相比与顶点的数量小 1 时，说明最小生成树已经生成。所以最终采用克鲁斯卡尔算法得到的最小生成树如上图所示。</p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &quot;stdio.h&quot;
+#include &quot;stdlib.h&quot;
+#define MAX_VERtEX_NUM 20
+#define VertexType int
+typedef struct edge&#123;
+    VertexType initial;
+    VertexType end;
+    VertexType weight;
+&#125;edge[MAX_VERtEX_NUM];
+&#x2F;&#x2F;定义辅助数组
+typedef struct &#123;
+    VertexType value;&#x2F;&#x2F;顶点数据
+    int sign;&#x2F;&#x2F;每个顶点所属的集合
+&#125;assist[MAX_VERtEX_NUM];
+assist assists;
+&#x2F;&#x2F;qsort排序函数中使用，使edges结构体中的边按照权值大小升序排序
+int cmp(const void *a,const void*b)&#123;
+    return  ((struct edge*)a)-&gt;weight-((struct edge*)b)-&gt;weight;
+&#125;
+&#x2F;&#x2F;初始化连通网
+void CreateUDN(edge *edges,int *vexnum,int *arcnum)&#123;
+    printf(&quot;输入连通网的边数：\n&quot;);
+    scanf(&quot;%d %d&quot;,&amp;(*vexnum),&amp;(*arcnum));
+    printf(&quot;输入连通网的顶点：\n&quot;);
+    for (int i&#x3D;0; i&lt;(*vexnum); i++) &#123;
+        scanf(&quot;%d&quot;,&amp;(assists[i].value));
+        assists[i].sign&#x3D;i;
+    &#125;
+    printf(&quot;输入各边的起始点和终点及权重：\n&quot;);
+    for (int i&#x3D;0 ; i&lt;(*arcnum); i++) &#123;
+        scanf(&quot;%d,%d,%d&quot;,&amp;(*edges)[i].initial,&amp;(*edges)[i].end,&amp;(*edges)[i].weight);
+    &#125;
+&#125;
+&#x2F;&#x2F;在assists数组中找到顶点point对应的位置下标
+int Locatevex(int vexnum,int point)&#123;
+    for (int i&#x3D;0; i&lt;vexnum; i++) &#123;
+        if (assists[i].value&#x3D;&#x3D;point) &#123;
+            return i;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+int main()&#123;
+   
+    int arcnum,vexnum;
+    edge edges;
+    CreateUDN(&amp;edges,&amp;vexnum,&amp;arcnum);
+    &#x2F;&#x2F;对连通网中的所有边进行升序排序，结果仍保存在edges数组中
+    qsort(edges, arcnum, sizeof(edges[0]), cmp);
+    &#x2F;&#x2F;创建一个空的结构体数组，用于存放最小生成树
+    edge minTree;
+    &#x2F;&#x2F;设置一个用于记录最小生成树中边的数量的常量
+    int num&#x3D;0;
+    &#x2F;&#x2F;遍历所有的边
+    for (int i&#x3D;0; i&lt;arcnum; i++) &#123;
+        &#x2F;&#x2F;找到边的起始顶点和结束顶点在数组assists中的位置
+        int initial&#x3D;Locatevex(vexnum, edges[i].initial);
+        int end&#x3D;Locatevex(vexnum, edges[i].end);
+        &#x2F;&#x2F;如果顶点位置存在且顶点的标记不同，说明不在一个集合中，不会产生回路
+        if (initial!&#x3D;-1&amp;&amp; end!&#x3D;-1&amp;&amp;assists[initial].sign!&#x3D;assists[end].sign) &#123;
+            &#x2F;&#x2F;记录该边，作为最小生成树的组成部分
+            minTree[num]&#x3D;edges[i];
+            &#x2F;&#x2F;计数+1
+            num++;
+            &#x2F;&#x2F;将新加入生成树的顶点标记全不更改为一样的
+            for (int k&#x3D;0; k&lt;vexnum; k++) &#123;
+                if (assists[k].sign&#x3D;&#x3D;assists[end].sign) &#123;
+                    assists[k].sign&#x3D;assists[initial].sign;
+                &#125;
+            &#125;
+            &#x2F;&#x2F;如果选择的边的数量和顶点数相差1，证明最小生成树已经形成，退出循环
+            if (num&#x3D;&#x3D;vexnum-1) &#123;
+                break;
+            &#125;
+        &#125;
+    &#125;
+    &#x2F;&#x2F;输出语句
+    for (int i&#x3D;0; i&lt;vexnum-1; i++) &#123;
+        printf(&quot;%d,%d\n&quot;,minTree[i].initial,minTree[i].end);
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="42-最短路径"><a class="markdownIt-Anchor" href="#42-最短路径"></a> 4.2 最短路径</h2><a href="/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" title="最短路径">最短路径</a><p>两个顶点之间带权路径长度最短的路径为最短路径。在带权图中，把从一个顶点v到另一个顶点u所经历的边的权值之和称为，路径的带权路径长度。</p><h3 id="421-迪杰斯特拉dijkstra算法"><a class="markdownIt-Anchor" href="#421-迪杰斯特拉dijkstra算法"></a> 4.2.1 迪杰斯特拉（Dijkstra）算法</h3><p><mark>带权图单源最短路径，不适用于含有负权边的图</mark></p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/迪杰斯特拉算法.png"> <img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/迪杰斯特拉算法-通过path数组找到路径.png"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void Dijkstra(Graph G,int v) &#123;
+  &#x2F;&#x2F; 初始化
+  int s[G.vexnum];
+  int path[G.vexnum];
+  int dist[G.vexnum];
+  for(int i &#x3D; 0; i &lt; G.vexnum; i++) &#123;
+    dist[i] &#x3D; G.edge[v][i];
+    s[i] &#x3D; 0;
+    if(G.edge[v][i] &lt; MAX) &#123;
+      path[i] &#x3D; v;
+    &#125; else &#123;
+      path[i] &#x3D; -1;
+    &#125;
+  &#125;
+  s[v] &#x3D; 1;
+  path[v] &#x3D; -1;
+  for(int i &#x3D; 0; i &lt; G.vexnum; i++)&#123;
+    int min &#x3D; MAX:
+    int u;
+    for(int j &#x3D; 0; j &lt; G.vexnum; j++) &#123;
+      if(S[j] &#x3D;&#x3D; 0 &amp;&amp; dist[j] &lt; min)&#123;
+        min &#x3D; dist[j];
+        u &#x3D; j;
+      &#125;
+    &#125;
+    s[u] &#x3D; 1;
+    for(int j &#x3D; 0; j &lt; G.vexnum; j++) &#123;
+      if(s[j] &#x3D;&#x3D; 0 &amp;&amp; dist[u] + G.Edge[i][j] &lt; dist[j]) &#123;
+        dist[j] &#x3D; dist[u] + G.Edge[u][i];
+        path[j] &#x3D; u;
+      &#125;
+    &#125;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="422-弗洛伊德floyd算法"><a class="markdownIt-Anchor" href="#422-弗洛伊德floyd算法"></a> 4.2.2 弗洛伊德（Floyd）算法</h3><p><strong>【算法思想】</strong></p><p>弗洛伊德的核心思想是：对于网中的任意两个顶点（例如顶点 A 到顶点 B）来说，之间的最短路径不外乎有 2 种情况：</p><ol><li>直接从顶点 A 到顶点 B 的弧的权值为顶点 A 到顶点 B 的最短路径；</li><li>从顶点 A 开始，经过若干个顶点，最终达到顶点 B，期间经过的弧的权值和为顶点 A 到顶点 B 的最短路径。<br>所以，弗洛伊德算法的核心为：对于从顶点 A 到顶点 B 的最短路径，拿出网中所有的顶点进行如下判断：</li></ol><blockquote><p>Dis（A，K）+ Dis（K，B）&lt; Dis（A，B）</p></blockquote><p>其中，K 表示网中所有的顶点；Dis（A，B） 表示顶点 A 到顶点 B 的距离。</p><p>也就是说，拿出所有的顶点 K，判断经过顶点 K 是否存在一条可行路径比直达的路径的权值小，如果式子成立，说明确实存在一条权值更小的路径，此时只需要更新记录的权值和即可。</p><p>任意的两个顶点全部做以上的判断，最终遍历完成后记录的最终的权值即为对应顶点之间的最短路径。</p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/弗洛伊德算法思想.png"><p><strong>【例子】</strong></p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/弗洛伊德01.png" alt="img" style="zoom:50%"><p>例如，在使用弗洛伊德算法计算图 1 中的任意两个顶点之间的最短路径时，具体实施步骤为：</p><p>首先，记录顶点之间初始的权值，如下表所示：</p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/弗洛伊德02.png"><p>依次遍历所有的顶点，假设从 V0 开始，将 V0 作为中间点，看每对顶点之间的距离值是否会更小。最终 V0 对于每对顶点之间的距离没有任何改善。</p><blockquote><p>对于 V0 来说，由于该顶点只有出度，没有入度，所以没有作为中间点的可能。同理，V1也没有可能。</p></blockquote><p>将 V2 作为每对顶点的中间点，有影响的为 （V0，V3） 和 （V1，V3）：</p><blockquote><p>例如，（V0，V3）权值为无穷大，而（V0，V2）+（V2，V3）= 60，比之前的值小，相比而言后者的路径更短；同理 （V1，V3）也是如此。</p></blockquote><p>更新的表格为：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B703.png" alt></p><p>以 V3 作为中间顶点遍历各队顶点，更新后的表格为：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B704.png" alt></p><p>以 V4 作为中间顶点遍历各队顶点，更新后的表格为：</p><p><img data-src="http://resource.silverbeats.cn/static/images/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B705.png" alt></p><p>而对于顶点 V5 来说，和顶点 V0 和 V1 相类似，所不同的是，V5 只有入度，没有出度，所以对各队顶点的距离不会产生影响。最终采用弗洛伊德算法求得的各个顶点之间的最短路径如上图所示。</p><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token expression">MAX_VERtEX_NUM <span class="token number">20</span>                   </span><span class="token comment">//顶点的最大个数</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token expression">VRType <span class="token keyword">int</span>                          </span><span class="token comment">//表示弧的权值的类型</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token expression">VertexType <span class="token keyword">int</span>                      </span><span class="token comment">//图中顶点的数据类型</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token expression">INFINITY <span class="token number">65535</span></span></span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    VertexType vexs<span class="token punctuation">[</span>MAX_VERtEX_NUM<span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">//存储图中顶点数据</span>
+    VRType arcs<span class="token punctuation">[</span>MAX_VERtEX_NUM<span class="token punctuation">]</span><span class="token punctuation">[</span>MAX_VERtEX_NUM<span class="token punctuation">]</span><span class="token punctuation">;</span>                         <span class="token comment">//二维数组，记录顶点之间的关系</span>
+    <span class="token keyword">int</span> vexnum<span class="token punctuation">,</span>arcnum<span class="token punctuation">;</span>                      <span class="token comment">//记录图的顶点数和弧（边）数</span>
+<span class="token punctuation">&#125;</span>MGraph<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> PathMatrix<span class="token punctuation">[</span>MAX_VERtEX_NUM<span class="token punctuation">]</span><span class="token punctuation">[</span>MAX_VERtEX_NUM<span class="token punctuation">]</span><span class="token punctuation">;</span>     <span class="token comment">//用于存储最短路径中经过的顶点的下标</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> ShortPathTable<span class="token punctuation">[</span>MAX_VERtEX_NUM<span class="token punctuation">]</span><span class="token punctuation">[</span>MAX_VERtEX_NUM<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//用于存储各个最短路径的权值和</span>
+<span class="token comment">//根据顶点本身数据，判断出顶点在二维数组中的位置</span>
+<span class="token keyword">int</span> <span class="token function">LocateVex</span><span class="token punctuation">(</span>MGraph <span class="token operator">*</span> G<span class="token punctuation">,</span>VertexType v<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">//遍历一维数组，找到变量v</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>G<span class="token operator">-></span>vexnum<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>G<span class="token operator">-></span>vexs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>v<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//如果找不到，输出提示语句，返回-1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i<span class="token operator">></span>G<span class="token operator">-></span>vexnum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"no such vertex.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//构造有向网</span>
+<span class="token keyword">void</span> <span class="token function">CreateUDG</span><span class="token punctuation">(</span>MGraph <span class="token operator">*</span>G<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token punctuation">(</span>G<span class="token operator">-></span>vexnum<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token punctuation">(</span>G<span class="token operator">-></span>arcnum<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>G<span class="token operator">-></span>vexnum<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token punctuation">(</span>G<span class="token operator">-></span>vexs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>G<span class="token operator">-></span>vexnum<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span>G<span class="token operator">-></span>vexnum<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            G<span class="token operator">-></span>arcs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>INFINITY<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>G<span class="token operator">-></span>arcnum<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> v1<span class="token punctuation">,</span>v2<span class="token punctuation">,</span>w<span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d,%d,%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>v1<span class="token punctuation">,</span><span class="token operator">&amp;</span>v2<span class="token punctuation">,</span><span class="token operator">&amp;</span>w<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n<span class="token operator">=</span><span class="token function">LocateVex</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> m<span class="token operator">=</span><span class="token function">LocateVex</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span>n<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"no this vertex\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        G<span class="token operator">-></span>arcs<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token operator">=</span>w<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//弗洛伊德算法，其中P二维数组存放各对顶点的最短路径经过的顶点，D二维数组存储各个顶点之间的权值</span>
+<span class="token keyword">void</span> <span class="token function">ShortestPath_Floyed</span><span class="token punctuation">(</span>MGraph G<span class="token punctuation">,</span>PathMatrix <span class="token operator">*</span>P<span class="token punctuation">,</span>ShortPathTable <span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">//对P数组和D数组进行初始化</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> v<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> w<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> w<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token operator">=</span>G<span class="token punctuation">.</span>arcs<span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//拿出每个顶点作为遍历条件</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> k<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//对于第k个顶点来说，遍历网中任意两个顶点，判断间接的距离是否更短</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> v<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> v<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> w<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> w<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">//判断经过顶点k的距离是否更短，如果判断成立，则存储距离更短的路径</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">*</span>D<span class="token punctuation">)</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">(</span><span class="token operator">*</span>P<span class="token punctuation">)</span><span class="token punctuation">[</span>v<span class="token punctuation">]</span><span class="token punctuation">[</span>w<span class="token punctuation">]</span><span class="token operator">=</span>k<span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    MGraph G<span class="token punctuation">;</span>
+    <span class="token function">CreateUDG</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>G<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    PathMatrix P<span class="token punctuation">;</span>
+    ShortPathTable D<span class="token punctuation">;</span>
+    <span class="token function">ShortestPath_Floyed</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> <span class="token operator">&amp;</span>P<span class="token punctuation">,</span> <span class="token operator">&amp;</span>D<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span>G<span class="token punctuation">.</span>vexnum<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d "</span><span class="token punctuation">,</span>D<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="43-拓扑排序"><a class="markdownIt-Anchor" href="#43-拓扑排序"></a> 4.3 拓扑排序</h2><p><span style="color:#00f;font-size:18px">有向无环图：</span>不存在环的有向图，简称DAG图</p><p><span style="color:#00f;font-size:18px">AOV网：</span>若用一个DAG图表示一个工程，其顶点表示活动，用有向边&lt;vi,vj&gt;表示活动vi先于活动vj进行的传递关系，则将这种DAG称为顶点表示活动网络，记为AOV网</p><p><span style="color:#00f;font-size:18px">拓扑排序：</span>对DAG所有顶点的一种排序，使若存在一条从顶点A到顶点B的路径，在排序中B排在A的后面</p><p><strong>【步骤】</strong></p><ol><li>从DAG中选择一个没有前驱的顶点并输出</li><li>从图中删除该顶点和所有以它为起点的有向边</li><li>重复上述步骤，直到当前DAG图为空或者当前图中不存在无前驱的顶点为止。后一种情况说明图中有环。</li></ol><p><mark>拓扑排序不一定唯一 O(|V|+|E|)</mark></p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">bool TopologicalSort(Graph G) &#123;
+  InitStack(s);
+  for(int i &#x3D; 0; i &lt; G.vexnum; i++) &#123;
+    if(indegree[i] &#x3D;&#x3D; 0)
+      push(s,i);
+  &#125;
+  int count &#x3D; 0;
+  while(!isEmpty(s)) &#123;
+    pop(s,i);
+    print[count++] &#x3D; i;
+    for(p &#x3D; G.Vertices[i].firstarc; p; p&#x3D;p-&gt;next) &#123;
+      v &#x3D; p-&gt;adjvex;
+      if(!(--indegree[v]))
+        push(s,v);
+    &#125;
+  &#125;
+  if(count &lt; G.vexnum)
+    return false;
+  else 
+    return true;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>若邻接矩阵为三角矩阵，则存在拓扑排序，反之不一定成立</p></blockquote><h2 id="44-关键路径"><a class="markdownIt-Anchor" href="#44-关键路径"></a> 4.4 关键路径</h2><p><span style="color:#00f;font-size:18px">AOE网：</span>在有向带权图中，以顶点表示事件，以有向边表示活动，以边上的权值表示完成该活动的开销（如完成活动需要的时间），则称这种有向图为用边表示活动的网络，简称AOE网</p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/AOE.png" alt="AOE网"><p><span style="color:#00f;font-size:18px">关键路径：</span>从原点到汇点最大路径长度的路径称为关键路径，关键路径上的活动为关键活动</p><img data-src="http://resource.silverbeats.cn/static/images/算法/数据结构/图/关键路径.png"><p>此时，d(i)为0的路径就是关键路径 {a2,a5,a7}</p><blockquote><p><mark>缩短关键活动的时间可以加快整个工程，但缩短到一定大小时，关键路径会发生变化</mark></p><p><mark>当网中关键路径不唯一时，只有加快关键活动或者关键活动组合包括在所有的关键路径上才能缩短工期</mark></p></blockquote><h1 id="5-图的基本操作"><a class="markdownIt-Anchor" href="#5-图的基本操作"></a> 5 图的基本操作</h1><table><thead><tr><th>操作</th><th>说明</th></tr></thead><tbody><tr><td>Adjacent(G,x,y)</td><td>判断图G是否存在&lt;x,y&gt;或者(x,y)</td></tr><tr><td>Neighbors(G,x)</td><td>列出图G与结点x邻接的边</td></tr><tr><td>InsertVertex(G,x)</td><td>在图G中插入顶点x</td></tr><tr><td>DeleteVertex(G,x)</td><td>图G中删除顶点x</td></tr><tr><td>AddEdge(G,x,y)</td><td>若所添加的边不存在，则添加（x,y）或者&lt;x,y&gt;</td></tr><tr><td>RemoveEdge(G,x,y)</td><td>若该边存在，则删除</td></tr><tr><td>FirstNeighbor(G,x)</td><td>求G中顶点x的第一个邻接点，图中无x点或者没有找到，返回-1</td></tr><tr><td>NextNeighbor(G,x)</td><td>y是x的一个邻接点，返回除y之外的顶点x的下一个邻接点顶点号，若y是x的最后一个邻接点，返回-1</td></tr><tr><td>Get_edge_value(G,x,y)</td><td>得到边的权重</td></tr><tr><td>Set_edge_value(G,x,y)</td><td>设置边的权重</td></tr></tbody></table><ul><li><p>Adjacent，判断图G是否存在某边</p><table><thead><tr><th></th><th>邻接矩阵</th><th>邻接表</th></tr></thead><tbody><tr><td>无向图</td><td>O(1)</td><td>O(|E|)</td></tr><tr><td>有向图</td><td>O(1)</td><td>O(|E|)</td></tr></tbody></table><blockquote><p>邻接矩阵存储。只需要通过数组下标访问某个位置即可，</p><p>邻接表存储。需要遍历单链表</p></blockquote></li><li><p>Neighbors，列出与所给结点邻接的边</p><table><thead><tr><th></th><th>邻接矩阵</th><th>邻接表</th></tr></thead><tbody><tr><td>无向图</td><td>O(|V|)</td><td>O(n),n≤|V|</td></tr><tr><td>有向图</td><td>O(2|V|)</td><td>O(|E|)</td></tr></tbody></table><blockquote><p>有向图【邻接矩阵存储】，找结点出度和入度只需要遍历该结点所在的行与列，遍历的次数为2|V|</p><p>有向图【邻接表存储】，虽然某结点的出度很容易得到，但是统计某结点的入度需要遍历每个结点的链表。次数一共为|E|</p></blockquote></li><li><p>InsertVertex，插入</p><blockquote><p>无向图/有向图【邻接矩阵】，插入结点，需要数组扩容，重新申请一个新数据，将旧数据拷贝（需要|V|<sup>2</sup>次），再将新结点与其他结点的填入扩充出来的位置中（需要|V|次），效率不高。</p><p>无向图/有向图，插入结点，需要扩充顶点表，旧数组中顶点表数据拷贝到新数组（|V|次），然后更新。效率会比邻接矩阵要高</p></blockquote></li><li><p>DeleteVertex</p><blockquote><p>对于邻接矩阵存储删除结点，可以使该结点的行与列置NULL，或者缩小矩阵来实现</p></blockquote></li><li><p>AddEdge</p><blockquote><p>邻接矩阵更快，直接修改矩阵中对应位置的值为1即可</p><p>邻接表，需要创建链表结点，再修改指针</p></blockquote></li><li><p>RemoveEdge</p><blockquote><p>邻接矩阵更快，直接修改数组中的元素数据</p><p>邻接表，找到对应的然后（费时间），然后删除</p></blockquote></li></ul></div><div class="popular-posts-header">相关文章</div><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><a href="\线性表\" rel="bookmark">线性表</a></div></li><li class="popular-posts-item"><div class="popular-posts-title"><a href="\数据结构题目\" rel="bookmark">数据结构题目</a></div></li><li class="popular-posts-item"><div class="popular-posts-title"><a href="\排序\" rel="bookmark">排序</a></div></li><li class="popular-posts-item"><div class="popular-posts-title"><a href="\树\" rel="bookmark">树</a></div></li><li class="popular-posts-item"><div class="popular-posts-title"><a href="\外部排序\" rel="bookmark">外部排序</a></div></li></ul><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者： </strong>silverbeats</li><li class="post-copyright-link"><strong>本文链接：</strong> <a href="/blog.silverbeats.cn/%E5%9B%BE/" title="图">blog.silverbeats.cn/图/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><div class="followme"><p>欢迎关注我的其它发布渠道</p><div class="social-list"><div class="social-item"><a target="_blank" class="social-link" href="/atom.xml"><span class="icon"><i class="fa fa-rss"></i> </span><span class="label">RSS</span></a></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a></div><div class="post-nav"><div class="post-nav-item"><a href="/%E6%A0%91/" rel="prev" title="树"><i class="fa fa-chevron-left"></i> 树</a></div><div class="post-nav-item"><a href="/%E6%9F%A5%E6%89%BE/" rel="next" title="查找">查找 <i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><script>window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }</script></div><div class="toggle sidebar-toggle"><span class="toggle-line toggle-line-first"></span> <span class="toggle-line toggle-line-middle"></span> <span class="toggle-line toggle-line-last"></span></div><aside class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc">文章目录</li><li class="sidebar-nav-overview">站点概览</li></ul><div class="post-toc-wrap sidebar-panel"><div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-text">1 逻辑结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%9B%BE%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">1.1 图的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-text">1.2 相关概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84%E5%8F%8A%E6%93%8D%E4%BD%9C"><span class="nav-text">2 存储结构及操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#21-%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="nav-text">2.1 邻接矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-%E9%82%BB%E6%8E%A5%E8%A1%A8%E6%B3%95"><span class="nav-text">2.2 邻接表法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-%E9%82%BB%E6%8E%A5%E5%A4%9A%E9%87%8D%E8%A1%A8"><span class="nav-text">2.3 邻接多重表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8"><span class="nav-text">2.4 十字链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8vs%E9%82%BB%E6%8E%A5%E5%A4%9A%E9%87%8D%E8%A1%A8"><span class="nav-text">2.5 十字链表VS邻接多重表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-text">3 图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#31-%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-text">3.1 广度优先遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-text">3.2 深度优先遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-%E9%81%8D%E5%8E%86%E4%B8%8E%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="nav-text">3.3 遍历与连通性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%BA%94%E7%94%A8"><span class="nav-text">4 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#41-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-text">4.1 最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#411-prim%E7%AE%97%E6%B3%95"><span class="nav-text">4.1.1 Prim算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#412-kruskal%E7%AE%97%E6%B3%95"><span class="nav-text">4.1.2 Kruskal算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="nav-text">4.2 最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#421-%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89dijkstra%E7%AE%97%E6%B3%95"><span class="nav-text">4.2.1 迪杰斯特拉（Dijkstra）算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#422-%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7floyd%E7%AE%97%E6%B3%95"><span class="nav-text">4.2.2 弗洛伊德（Floyd）算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#43-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="nav-text">4.3 拓扑排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#44-%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84"><span class="nav-text">4.4 关键路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">5 图的基本操作</span></a></li></ol></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" alt="silverbeats" src="/images/avatar.jpg"><p class="site-author-name" itemprop="name">silverbeats</p><div class="site-description" itemprop="description">坚持学习每一天</div></div><div class="site-state-wrap motion-element"><nav class="site-state"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">18</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class="site-state-item-count">19</span> <span class="site-state-item-name">标签</span></a></div></nav></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/SilverBeats" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SilverBeats" rel="external nofollow noopener noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a> </span><span class="links-of-author-item"><a href="mailto:418116014@qq.com" title="E-Mail → mailto:418116014@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div><div class="links-of-blogroll motion-element"><div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"><a href="https://hexo.io/" title="https:&#x2F;&#x2F;hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a></li><li class="links-of-blogroll-item"><a href="https://page.github.com/" title="https:&#x2F;&#x2F;page.github.com&#x2F;" rel="external nofollow noopener noreferrer" target="_blank">GitHub</a></li></ul></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span>0%</span></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2020</span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">silverbeats</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-chart-area"></i> </span><span class="post-meta-item-text">站点总字数：</span> <span title="站点总字数">132k</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-coffee"></i> </span><span class="post-meta-item-text">站点阅读时长 &asymp;</span> <span title="站点阅读时长">2:01</span></div></div></footer></div><script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script><script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script><script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script><script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script><script src="/lib/velocity/velocity.min.js"></script><script src="/lib/velocity/velocity.ui.min.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/pisces.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script>var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});</script><script data-pjax>!function(){var e,t,o,n,r,a=document.getElementsByTagName("link");if(0<a.length)for(i=0;i<a.length;i++)"canonical"==a[i].rel.toLowerCase()&&a[i].href&&(e=a[i].href);t=e?e.split(":")[0]:window.location.protocol.split(":")[0],e=e||window.location.href,window,n=e,r=document.referrer,/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi.test(n)||(o="https"===String(t).toLowerCase()?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif",r?(o+="?r="+encodeURIComponent(document.referrer),n&&(o+="&l="+n)):n&&(o+="?l="+n),(new Image).src=o)}()</script><script src="/js/local-search.js"></script><div id="pjax"><script>NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : '4yFTi53i4AR9eRTXpjPbO8ij-MdYXbMMI',
+      appKey     : 'OB2doLRExPkAaxwEgTs6tPOz',
+      placeholder: "(σﾟ∀ﾟ)σ..:*☆哎哟不错哦",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});</script> <script async src="/js/cursor/fireworks.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({model:{jsonPath:"/live2dw/assets/hibiki.model.json"},display:{position:"right",width:150,height:300},mobile:{show:!1},log:!1,pluginJsPath:"lib/",pluginModelPath:"assets/",pluginRootPath:"live2dw/",tagMode:!1})</script></body></html>
